@@ -32,14 +32,14 @@ import com.byron.kline.utils.Status;
 import java.util.Set;
 
 /*************************************************************************
- * Description   :
+ * Description :
  *
- * @PackageName  : com.byron.kline.utils
- * @FileName     : KLineChartView.java
- * @Author       : chao
- * @Date         : 2019/4/8
- * @Email        : icechliu@gmail.com
- * @version      : V1
+ * @PackageName : com.byron.kline.utils
+ * @FileName : KLineChartView.java
+ * @Author : chao
+ * @Date : 2019/4/8
+ * @Email : icechliu@gmail.com
+ * @version : V1
  *************************************************************************/
 @SuppressWarnings("unused")
 public class KChartView extends BaseKChartView {
@@ -80,17 +80,20 @@ public class KChartView extends BaseKChartView {
         if (null != array) {
             try {
                 setLogoResouce(array.getResourceId(R.styleable.KChartView_chartLogo, 0));
-                //最大最小值
+                // 最大最小值
                 setLimitTextSize(array.getDimension(R.styleable.KChartView_limitTextSize, DpUtil.Dp2Px(context, 10)));
                 setLimitTextColor(array.getColor(R.styleable.KChartView_limitTextColor, Color.parseColor("#6D87A8")));
-                //全局
+                // 全局
                 setBetterX(array.getBoolean(R.styleable.KChartView_betterXLabel, true));
                 setBetterSelectedX(array.getBoolean(R.styleable.KChartView_betterSelectedXLabel, true));
                 setyLabelMarginBorder(array.getDimension(R.styleable.KChartView_yLabelMarginBorder, 10));
-                setCrossFollowTouch(array.getBoolean(R.styleable.KChartView_closeFollowTouch, false) ? Status.CrossTouchModel.FOLLOW_FINGERS : Status.CrossTouchModel.SHOW_CLOSE);
+                setCrossFollowTouch(array.getBoolean(R.styleable.KChartView_closeFollowTouch, false)
+                        ? Status.CrossTouchModel.FOLLOW_FINGERS
+                        : Status.CrossTouchModel.SHOW_CLOSE);
                 setLineWidth(array.getDimension(R.styleable.KChartView_lineWidth, DpUtil.Dp2Px(context, 0.8f)));
                 setCommonTextSize(array.getDimension(R.styleable.KChartView_commonTextSize, DpUtil.Dp2Px(context, 10)));
-                setMacdStrockWidth(array.getDimension(R.styleable.KChartView_macdStrokeWidth, DpUtil.Dp2Px(context, 0.8f)));
+                setMacdStrockWidth(
+                        array.getDimension(R.styleable.KChartView_macdStrokeWidth, DpUtil.Dp2Px(context, 0.8f)));
                 setXLabelTextSize(array.getDimension(R.styleable.KChartView_labelTextSize, DpUtil.Dp2Px(context, 10)));
                 setYLabelTextSize(array.getDimension(R.styleable.KChartView_labelTextSize, DpUtil.Dp2Px(context, 10)));
                 setCommonTextColor(array.getColor(R.styleable.KChartView_commonTextColor, Color.parseColor("#6D87A8")));
@@ -98,113 +101,151 @@ public class KChartView extends BaseKChartView {
                 setYLabelTextColor(array.getColor(R.styleable.KChartView_labelTextColor, Color.parseColor("#6D87A8")));
                 setYlabelAlign(array.getBoolean(R.styleable.KChartView_yLabelAlign, false));
                 setChartPaddingTop(array.getDimension(R.styleable.KChartView_paddingTop, DpUtil.Dp2Px(context, 20)));
-                setChildPaddingTop(array.getDimension(R.styleable.KChartView_childPaddingTop, DpUtil.Dp2Px(context, 10)));
+                setChildPaddingTop(
+                        array.getDimension(R.styleable.KChartView_childPaddingTop, DpUtil.Dp2Px(context, 10)));
                 setChartPaddingBottom(array.getDimension(R.styleable.KChartView_paddingBottom, 0));
-                //网格
+                // 网格
                 setGridLineWidth(array.getDimension(R.styleable.KChartView_gridLineWidth, DpUtil.Dp2Px(context, 0.8f)));
                 setGridColumns(array.getInteger(R.styleable.KChartView_gridLineColumns, 5));
                 setGridRows(array.getInteger(R.styleable.KChartView_gridLineRows, 5));
                 setGridLineColor(array.getColor(R.styleable.KChartView_gridLineColor, Color.parseColor("#1ACFD3A9")));
-                //图例
+                // 图例
                 setVolLegendColor(array.getColor(R.styleable.KChartView_volLegendColor, Color.parseColor("#6D87A8")));
                 setMainLegendMarginTop(array.getDimension(R.styleable.KChartView_mainLegendMarginTop, 10f));
                 setLegendMarginLeft(array.getDimension(R.styleable.KChartView_legendMarginLeft, 0f));
                 setVolLegendMarginTop(array.getDimension(R.styleable.KChartView_volLegendMarginTop, 10f));
-                //成交量
-                setVolLineChartColor(array.getColor(R.styleable.KChartView_volLineChartColor, Color.parseColor("#4B85A6")));
+                // 成交量
+                setVolLineChartColor(
+                        array.getColor(R.styleable.KChartView_volLineChartColor, Color.parseColor("#4B85A6")));
 
-                //价格线
-                setPriceLineWidth(array.getDimension(R.styleable.KChartView_priceLineWidth, DpUtil.Dp2Px(context, 0.8f)));
+                // 价格线
+                setPriceLineWidth(
+                        array.getDimension(R.styleable.KChartView_priceLineWidth, DpUtil.Dp2Px(context, 0.8f)));
                 setPriceLineColor(array.getColor(R.styleable.KChartView_priceLineColor, Color.parseColor("#6D87A8")));
-                setPriceLineRightColor(array.getColor(R.styleable.KChartView_priceLineRightColor, Color.parseColor("#4B85A6")));
-                setPriceLabelRightTextColor(array.getColor(R.styleable.KChartView_priceLabelRightTextColor, Color.parseColor("#4B85A6")));
-                setPriceLabelRightBackgroundColor(array.getColor(R.styleable.KChartView_priceLabelRightBackgroundColor, Color.parseColor("#131F30")));
-                setPriceLabelInLineBoxBackgroundColor(array.getColor(R.styleable.KChartView_priceLabelInLineBoxBackgroundColor, Color.parseColor("#CFD3E9")));
-                setPriceLabelInLineBoxBorderColor(array.getColor(R.styleable.KChartView_priceLabelInLineBoxBorderColor, Color.parseColor("#CFD3E9")));
-                setPriceLabelInLineBoxBorderWidth(array.getDimension(R.styleable.KChartView_priceLabelInLineBoxBorderWidth, 0.8f));
-                setPriceLabelInLineBoxPadding(array.getDimension(R.styleable.KChartView_priceLabelInLineBoxPadding, 20));
-                setPriceLabelInLineMarginRight(array.getDimension(R.styleable.KChartView_priceLabelInLineBoxMarginRight, 120));
+                setPriceLineRightColor(
+                        array.getColor(R.styleable.KChartView_priceLineRightColor, Color.parseColor("#4B85A6")));
+                setPriceLabelRightTextColor(
+                        array.getColor(R.styleable.KChartView_priceLabelRightTextColor, Color.parseColor("#4B85A6")));
+                setPriceLabelRightBackgroundColor(array.getColor(R.styleable.KChartView_priceLabelRightBackgroundColor,
+                        Color.parseColor("#131F30")));
+                setPriceLabelInLineBoxBackgroundColor(array.getColor(
+                        R.styleable.KChartView_priceLabelInLineBoxBackgroundColor, Color.parseColor("#CFD3E9")));
+                setPriceLabelInLineBoxBorderColor(array.getColor(R.styleable.KChartView_priceLabelInLineBoxBorderColor,
+                        Color.parseColor("#CFD3E9")));
+                setPriceLabelInLineBoxBorderWidth(
+                        array.getDimension(R.styleable.KChartView_priceLabelInLineBoxBorderWidth, 0.8f));
+                setPriceLabelInLineBoxPadding(
+                        array.getDimension(R.styleable.KChartView_priceLabelInLineBoxPadding, 20));
+                setPriceLabelInLineMarginRight(
+                        array.getDimension(R.styleable.KChartView_priceLabelInLineBoxMarginRight, 120));
                 setPriceLabelInLineBoxHeight(array.getDimension(R.styleable.KChartView_priceLabelInLineBoxHeight, 40));
                 setPriceLabelInLineBoxRadius(array.getDimension(R.styleable.KChartView_priceLabelInLineBoxRadius, 20));
-                setPriceLabelInLineShapeWidth(array.getDimension(R.styleable.KChartView_priceLabelInLineShapeWidth, 10));
-                setPriceLabelInLineShapeHeight(array.getDimension(R.styleable.KChartView_priceLabelInLineShapeHeight, 20));
-                setPriceLabelInLineShapeTextMargin(array.getDimension(R.styleable.KChartView_priceLabelInLineBoxShapeTextMargin, 10));
+                setPriceLabelInLineShapeWidth(
+                        array.getDimension(R.styleable.KChartView_priceLabelInLineShapeWidth, 10));
+                setPriceLabelInLineShapeHeight(
+                        array.getDimension(R.styleable.KChartView_priceLabelInLineShapeHeight, 20));
+                setPriceLabelInLineShapeTextMargin(
+                        array.getDimension(R.styleable.KChartView_priceLabelInLineBoxShapeTextMargin, 10));
                 setPriceLabelInLineClickable(array.getBoolean(R.styleable.KChartView_priceLabelInLineClickable, false));
                 setPriceLineDotSolidWidth(array.getDimension(R.styleable.KChartView_priceLineDotSolidWidth, 8f));
                 setPriceLineDotStrokeWidth(array.getDimension(R.styleable.KChartView_priceLineDotStrokeWidth, 4f));
-                setPriceLabelRightBackgroundAlpha(array.getInt(R.styleable.KChartView_priceLineRightLabelBackGroundAlpha, 255));
-                setPriceLabelInLineTextColor(array.getInt(R.styleable.KChartView_priceLabelInLineTextColor, Color.parseColor("#6D87A8")));
-                setPriceLabelInLineTextSize(array.getDimension(R.styleable.KChartView_priceLabelInLineTextSize, DpUtil.Dp2Px(context, 10)));
+                setPriceLabelRightBackgroundAlpha(
+                        array.getInt(R.styleable.KChartView_priceLineRightLabelBackGroundAlpha, 255));
+                setPriceLabelInLineTextColor(
+                        array.getInt(R.styleable.KChartView_priceLabelInLineTextColor, Color.parseColor("#6D87A8")));
+                setPriceLabelInLineTextSize(
+                        array.getDimension(R.styleable.KChartView_priceLabelInLineTextSize, DpUtil.Dp2Px(context, 10)));
 
-                //十字线
-                setSelectedCrossBigColor(array.getColor(R.styleable.KChartView_selectedCrossBigColor, Color.parseColor("#9ACFD3E9")));
+                // 十字线
+                setSelectedCrossBigColor(
+                        array.getColor(R.styleable.KChartView_selectedCrossBigColor, Color.parseColor("#9ACFD3E9")));
                 setSelectedPointColor(array.getColor(R.styleable.KChartView_selectedCrossPointColor, Color.WHITE));
-                setSelectedPointRadius(array.getDimension(R.styleable.KChartView_selectedCrossPointRadius, DpUtil.Dp2Px(context, 0.8f)));
+                setSelectedPointRadius(array.getDimension(R.styleable.KChartView_selectedCrossPointRadius,
+                        DpUtil.Dp2Px(context, 0.8f)));
                 setSelectedShowCrossPoint(array.getBoolean(R.styleable.KChartView_selectedShowCrossPoint, true));
-                setSelectedXLineWidth(array.getDimension(R.styleable.KChartView_selectedXLineWidth, DpUtil.Dp2Px(context, 0.8f)));
-                setSelectedXLabelBorderWidth(array.getDimension(R.styleable.KChartView_selectedXLabelBorderWidth, DpUtil.Dp2Px(context, 0.8f)));
-                setSelectedXLabelBorderColor(array.getColor(R.styleable.KChartView_selectedXLabelBorderColor, Color.WHITE));
-                setSelectedXLabelBackgroundColor(array.getColor(R.styleable.KChartView_selectedXLabelBackgroundColor, Color.parseColor("#CFD3E9")));
+                setSelectedXLineWidth(
+                        array.getDimension(R.styleable.KChartView_selectedXLineWidth, DpUtil.Dp2Px(context, 0.8f)));
+                setSelectedXLabelBorderWidth(array.getDimension(R.styleable.KChartView_selectedXLabelBorderWidth,
+                        DpUtil.Dp2Px(context, 0.8f)));
+                setSelectedXLabelBorderColor(
+                        array.getColor(R.styleable.KChartView_selectedXLabelBorderColor, Color.parseColor("#333333")));
+                setSelectedXLabelBackgroundColor(array.getColor(R.styleable.KChartView_selectedXLabelBackgroundColor,
+                        Color.parseColor("#CFD3E9")));
                 setSelectedYLineWidth(array.getDimension(R.styleable.KChartView_selectedYLineWidth, 7));
-                setSelectedXLineColor(array.getColor(R.styleable.KChartView_selectedXLineColor, Color.parseColor("#CFD3E9")));
-                setSelectedYLineColor(array.getColor(R.styleable.KChartView_selectedYLineColor, Color.parseColor("#1ACFD3E9")));
+                setSelectedXLineColor(
+                        array.getColor(R.styleable.KChartView_selectedXLineColor, Color.parseColor("#CFD3E9")));
+                setSelectedYLineColor(
+                        array.getColor(R.styleable.KChartView_selectedYLineColor, Color.parseColor("#1ACFD3E9")));
                 setSelectedYColor(array.getColor(R.styleable.KChartView_selectedYColor, Color.parseColor("#CFD3E9")));
-                setSelectedPriceBoxBackgroundColor(array.getColor(R.styleable.KChartView_selectedPriceBoxBackgroundColor, Color.parseColor("#081724")));
-                setSelectedPriceBoxHorizentalPadding(array.getDimension(R.styleable.KChartView_selectedPriceBoxHorizontalPadding, DpUtil.Dp2Px(context, 5)));
-                setSelectedPriceboxVerticalPadding(array.getDimension(R.styleable.KChartView_selectedPriceBoxVerticalPadding, DpUtil.Dp2Px(context, 0.8f)));
-                setSelectedDateBoxHorizontalPadding(array.getDimension(R.styleable.KChartView_selectedDateBoxHorizontalPadding, DpUtil.Dp2Px(context, 5)));
-                setSelectedDateBoxVerticalPadding(array.getDimension(R.styleable.KChartView_selectedDateBoxVerticalPadding, DpUtil.Dp2Px(context, 0.8f)));
-                setSelectInfoBoxMargin(array.getDimension(R.styleable.KChartView_selectedInfoBoxMargin, DpUtil.Dp2Px(context, 5)));
+                setSelectedPriceBoxBackgroundColor(array
+                        .getColor(R.styleable.KChartView_selectedPriceBoxBackgroundColor, Color.parseColor("#081724")));
+                setSelectedPriceBoxHorizentalPadding(array.getDimension(
+                        R.styleable.KChartView_selectedPriceBoxHorizontalPadding, DpUtil.Dp2Px(context, 5)));
+                setSelectedPriceboxVerticalPadding(array.getDimension(
+                        R.styleable.KChartView_selectedPriceBoxVerticalPadding, DpUtil.Dp2Px(context, 0.8f)));
+                setSelectedDateBoxHorizontalPadding(array.getDimension(
+                        R.styleable.KChartView_selectedDateBoxHorizontalPadding, DpUtil.Dp2Px(context, 5)));
+                setSelectedDateBoxVerticalPadding(array.getDimension(
+                        R.styleable.KChartView_selectedDateBoxVerticalPadding, DpUtil.Dp2Px(context, 0.8f)));
+                setSelectInfoBoxMargin(
+                        array.getDimension(R.styleable.KChartView_selectedInfoBoxMargin, DpUtil.Dp2Px(context, 5)));
                 setSelectInfoBoxColors(
                         array.getColor(R.styleable.KChartView_selectedInfoBoxTextColor, Color.WHITE),
                         array.getColor(R.styleable.KChartView_selectedInfoBoxBorderColor, Color.WHITE),
-                        array.getColor(R.styleable.KChartView_selectedInfoBoxBackgroundColor, Color.DKGRAY)
-                );
-                setSelectedInfoTextSize(array.getDimension(R.styleable.KChartView_selectedInfoTextSize, DpUtil.Dp2Px(context, 10)));
+                        array.getColor(R.styleable.KChartView_selectedInfoBoxBackgroundColor, Color.DKGRAY));
+                setSelectedInfoTextSize(
+                        array.getDimension(R.styleable.KChartView_selectedInfoTextSize, DpUtil.Dp2Px(context, 10)));
                 setSelectInfoBoxPadding(array.getDimension(R.styleable.KChartView_selectedInfoBoxPadding, 4));
                 setSelectedInfoLabels((String[]) array.getTextArray(R.styleable.KChartView_selectedInfoLabels));
-                setSelectedXLabelTextColor(array.getColor(R.styleable.KChartView_selectedXLabelTextColor, Color.parseColor("#6D87A8")));
-                setSelectedXLabelTextSize(array.getDimension(R.styleable.KChartView_selectedXLabelTextSize, DpUtil.Dp2Px(context, 10)));
-                //K线
+                setSelectedXLabelTextColor(
+                        array.getColor(R.styleable.KChartView_selectedXLabelTextColor, Color.parseColor("#6D87A8")));
+                setSelectedXLabelTextSize(
+                        array.getDimension(R.styleable.KChartView_selectedXLabelTextSize, DpUtil.Dp2Px(context, 10)));
+                // K线
                 setIncreaseColor(array.getColor(R.styleable.KChartView_increaseColor, Color.GREEN));
                 setDecreaseColor(array.getColor(R.styleable.KChartView_decreaseColor, Color.RED));
                 setChartItemWidth(array.getDimension(R.styleable.KChartView_itemWidth, 25));
                 setCandleWidth(array.getDimension(R.styleable.KChartView_candleWidth, 20));
-                setCandleLineWidth(array.getDimension(R.styleable.KChartView_candleLineWidth, DpUtil.Dp2Px(context, 0.8f)));
+                setCandleLineWidth(
+                        array.getDimension(R.styleable.KChartView_candleLineWidth, DpUtil.Dp2Px(context, 0.8f)));
 
-                //背景添加渐变色
-                setBackGroundFillTopColor(array.getColor(R.styleable.KChartView_backgroundFillTopColor, Color.TRANSPARENT));
-                setBackGroundFillBottomColor(array.getColor(R.styleable.KChartView_backgroundFillBottomColor, Color.TRANSPARENT));
+                // 背景添加渐变色
+                setBackGroundFillTopColor(
+                        array.getColor(R.styleable.KChartView_backgroundFillTopColor, Color.TRANSPARENT));
+                setBackGroundFillBottomColor(
+                        array.getColor(R.styleable.KChartView_backgroundFillBottomColor, Color.TRANSPARENT));
 
                 // time line
                 setTimeLineColor(array.getColor(R.styleable.KChartView_timeLineColor, Color.parseColor("#4B85D6")));
-                setTimeLineFillTopColor(array.getColor(R.styleable.KChartView_timeLineFillTopColor, Color.parseColor("#404B85D6")));
-                setTimeLineFillBottomColor(array.getColor(R.styleable.KChartView_timeLineFillBottomColor, Color.parseColor("#004B85D6")));
+                setTimeLineFillTopColor(
+                        array.getColor(R.styleable.KChartView_timeLineFillTopColor, Color.parseColor("#404B85D6")));
+                setTimeLineFillBottomColor(
+                        array.getColor(R.styleable.KChartView_timeLineFillBottomColor, Color.parseColor("#004B85D6")));
                 setTimeLineEndColor(array.getColor(R.styleable.KChartView_timeLineEndPointColor, Color.WHITE));
-                setTimeLineEndRadius(array.getDimension(R.styleable.KChartView_timeLineEndRadius, DpUtil.Dp2Px(context, 4)));
+                setTimeLineEndRadius(
+                        array.getDimension(R.styleable.KChartView_timeLineEndRadius, DpUtil.Dp2Px(context, 4)));
                 setTimeLineEndMultiply(array.getFloat(R.styleable.KChartView_timeLineEndMultiply, 3f));
 
-
-                //macd
+                // macd
                 setMacdChartColor(array.getColor(R.styleable.KChartView_macdIncreaseColor, Color.parseColor("#03C087")),
                         array.getColor(R.styleable.KChartView_macdDecreaseColor, Color.parseColor("#FF605A")));
                 setMACDWidth(array.getDimension(R.styleable.KChartView_macdWidth, 10));
                 setDIFColor(array.getColor(R.styleable.KChartView_difColor, Color.parseColor("#F6DC93")));
                 setDEAColor(array.getColor(R.styleable.KChartView_deaColor, Color.parseColor("#61D1C0")));
                 setMACDColor(array.getColor(R.styleable.KChartView_macdColor, Color.parseColor("#CB92FE")));
-                //kdj
+                // kdj
                 setKColor(array.getColor(R.styleable.KChartView_kColor, Color.parseColor("#F6DC93")));
                 setDColor(array.getColor(R.styleable.KChartView_dColor, Color.parseColor("#61D1C0")));
                 setJColor(array.getColor(R.styleable.KChartView_jColor, Color.parseColor("#CB92FE")));
-                //wr
+                // wr
                 setR1Color(array.getColor(R.styleable.KChartView_wr1Color, Color.parseColor("#F6DC93")));
                 setR2Color(array.getColor(R.styleable.KChartView_wr2Color, Color.parseColor("#61D1C0")));
                 setR3Color(array.getColor(R.styleable.KChartView_wr3Color, Color.parseColor("#CB92FE")));
-                //rsi
+                // rsi
                 setRSI1Color(array.getColor(R.styleable.KChartView_rsi1Color, Color.parseColor("#F6DC93")));
                 setRSI2Color(array.getColor(R.styleable.KChartView_rsi2Color, Color.parseColor("#61D1C0")));
                 setRSI3Color(array.getColor(R.styleable.KChartView_ris3Color, Color.parseColor("#CB92FE")));
-                //main
+                // main
                 setMa1Color(array.getColor(R.styleable.KChartView_ma1Color, Color.parseColor("#F6DC93")));
                 setMa2Color(array.getColor(R.styleable.KChartView_ma2Color, Color.parseColor("#61D1C0")));
                 setMa3Color(array.getColor(R.styleable.KChartView_ma3Color, Color.parseColor("#CB92FE")));
@@ -212,7 +253,8 @@ public class KChartView extends BaseKChartView {
                 setVolMa1Color(array.getColor(R.styleable.KChartView_volMa1Color, Color.parseColor("#F6DC93")));
                 setVolMa2Color(array.getColor(R.styleable.KChartView_volMa2Color, Color.parseColor("#61D1C0")));
 
-                setCandleSolid(Status.HollowModel.getStrokeModel(array.getInteger(R.styleable.KChartView_candleSolid, 0)));
+                setCandleSolid(
+                        Status.HollowModel.getStrokeModel(array.getInteger(R.styleable.KChartView_candleSolid, 0)));
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -322,7 +364,6 @@ public class KChartView extends BaseKChartView {
         return this;
     }
 
-
     /**
      * 子视图的顶部padding
      *
@@ -356,7 +397,6 @@ public class KChartView extends BaseKChartView {
         return this;
     }
 
-
     /**
      * 价格线虚线间隙
      *
@@ -367,7 +407,6 @@ public class KChartView extends BaseKChartView {
         priceDotLineItemSpace = width;
         return this;
     }
-
 
     /**
      * 价格线框边框宽度
@@ -464,7 +503,6 @@ public class KChartView extends BaseKChartView {
         return this;
     }
 
-
     /**
      * 切换时可能会引起动画效果
      * 延迟500换秒隐藏动画以免动画效果显示
@@ -491,7 +529,6 @@ public class KChartView extends BaseKChartView {
         return this;
     }
 
-
     /**
      * 设置是否可以缩放
      *
@@ -501,7 +538,6 @@ public class KChartView extends BaseKChartView {
     public void setScaleEnable(boolean scaleEnable) {
         super.setScaleEnable(scaleEnable);
     }
-
 
     /**
      * 设置是否可以 滑动
@@ -652,7 +688,6 @@ public class KChartView extends BaseKChartView {
         return this;
     }
 
-
     public KChartView setVolMa1Color(int color) {
         volumeRender.setMaOneColor(color);
         return this;
@@ -740,11 +775,10 @@ public class KChartView extends BaseKChartView {
         return this;
     }
 
-
     /**
      * 设置十字线跟随手势移动/十字线显示收盘价
      *
-     * @param model {@link Status.CrossTouchModel} default  SHOW_CLOSE
+     * @param model {@link Status.CrossTouchModel} default SHOW_CLOSE
      * @return {@link KChartView}
      */
     public KChartView setCrossFollowTouch(Status.CrossTouchModel model) {
@@ -776,7 +810,6 @@ public class KChartView extends BaseKChartView {
         return this;
     }
 
-
     /**
      * 全局通用线宽
      *
@@ -798,7 +831,6 @@ public class KChartView extends BaseKChartView {
 
         return this;
     }
-
 
     @Override
     public void onSelectedChange(MotionEvent e) {
@@ -830,7 +862,6 @@ public class KChartView extends BaseKChartView {
         return this;
     }
 
-
     public KChartView setMainPercent(float mainPercent) {
         this.mainPercent = mainPercent;
         return this;
@@ -845,7 +876,6 @@ public class KChartView extends BaseKChartView {
         this.IndexPercent = childPresent;
         return this;
     }
-
 
     /**
      * 获取ValueFormatter
@@ -886,7 +916,6 @@ public class KChartView extends BaseKChartView {
         }
         return this;
     }
-
 
     /**
      * 获取DatetimeFormatter
@@ -933,7 +962,6 @@ public class KChartView extends BaseKChartView {
         }
         return this;
     }
-
 
     /**
      * 设置价格线上价格框离右距离
@@ -1077,7 +1105,6 @@ public class KChartView extends BaseKChartView {
         return this;
     }
 
-
     /**
      * 选中的线的Y轴颜色
      *
@@ -1168,7 +1195,6 @@ public class KChartView extends BaseKChartView {
         return this;
     }
 
-
     /**
      * 设置主实图图例距离主视图上边缘的距离
      *
@@ -1258,7 +1284,6 @@ public class KChartView extends BaseKChartView {
         return this;
     }
 
-
     /**
      * 价格线右侧的颜色
      *
@@ -1293,7 +1318,6 @@ public class KChartView extends BaseKChartView {
         return this;
     }
 
-
     /**
      * 设置每根K线总宽度(包含外间隙)
      *
@@ -1312,7 +1336,6 @@ public class KChartView extends BaseKChartView {
     public float getChartItemWidth() {
         return chartItemWidth;
     }
-
 
     /**
      * 分时线呼吸灯的颜色
@@ -1362,7 +1385,6 @@ public class KChartView extends BaseKChartView {
         return this;
     }
 
-
     /**
      * 统一设置设置文字大小
      *
@@ -1403,7 +1425,6 @@ public class KChartView extends BaseKChartView {
         return this;
     }
 
-
     /**
      * 设置选中Y值背景色
      *
@@ -1414,7 +1435,6 @@ public class KChartView extends BaseKChartView {
         selectedPriceBoxBackgroundPaint.setColor(color);
         return this;
     }
-
 
     /**
      * 设置K线右侧超出范围
@@ -1429,7 +1449,6 @@ public class KChartView extends BaseKChartView {
         setScrollX((int) -overScrollRange);
         return this;
     }
-
 
     /**
      * 设置上方padding
@@ -1566,7 +1585,6 @@ public class KChartView extends BaseKChartView {
         return this;
     }
 
-
     /**
      * 设置X轴坐标文字颜色
      *
@@ -1590,7 +1608,6 @@ public class KChartView extends BaseKChartView {
         mainRender.setSelectorColors(textColor, borderColor, backgroundColor);
         return this;
     }
-
 
     /**
      * 设置表格行数
@@ -1634,7 +1651,6 @@ public class KChartView extends BaseKChartView {
         return this;
     }
 
-
     /**
      * 设置数据适配器
      *
@@ -1657,7 +1673,6 @@ public class KChartView extends BaseKChartView {
         return this;
     }
 
-
     /**
      * 设置选择监听
      *
@@ -1669,7 +1684,6 @@ public class KChartView extends BaseKChartView {
         this.selectedChangedListener = l;
         return this;
     }
-
 
     /**
      * 设置当前显示子图
@@ -1720,7 +1734,7 @@ public class KChartView extends BaseKChartView {
     /**
      * 设置加载数据时是否使用动画
      *
-     * @param withAnim true load data with anim ; default  true
+     * @param withAnim true load data with anim ; default true
      * @return {@link KChartView}
      */
     public KChartView setAnimLoadData(boolean withAnim) {
@@ -1736,7 +1750,6 @@ public class KChartView extends BaseKChartView {
     public Status.MainStatus getStatus() {
         return super.getStatus();
     }
-
 
     /**
      * 设置k线加载中loading
@@ -1790,7 +1803,6 @@ public class KChartView extends BaseKChartView {
         return this;
     }
 
-
     /**
      * 设置K线显示的logo
      *
@@ -1836,7 +1848,8 @@ public class KChartView extends BaseKChartView {
      * 设置K线logo与主视图的左边距离,下边距
      *
      * @param leftMargin   logo left location default 0
-     * @param bottomMargin logo top location default  -1 when top is -1 the logo will show in bottom
+     * @param bottomMargin logo top location default -1 when top is -1 the logo will
+     *                     show in bottom
      * @return {@link KChartView}
      */
     public KChartView setLogoMargin(float leftMargin, float bottomMargin) {
@@ -1845,7 +1858,6 @@ public class KChartView extends BaseKChartView {
         initRect();
         return this;
     }
-
 
     /**
      * 设置K线显示选中的点击模式
@@ -1857,7 +1869,6 @@ public class KChartView extends BaseKChartView {
         this.modle = showCrossModel;
         return this;
     }
-
 
     /**
      * 设置价格线右侧标签的背景透明度
@@ -1956,7 +1967,6 @@ public class KChartView extends BaseKChartView {
         return this;
     }
 
-
     /**
      * 获取当前成交量视图晚是否显示
      *
@@ -1965,7 +1975,6 @@ public class KChartView extends BaseKChartView {
     public boolean getVolShowState() {
         return (chartShowStatue == Status.ChildStatus.MAIN_VOL || chartShowStatue == Status.ChildStatus.MAIN_VOL_INDEX);
     }
-
 
     /**
      * 设置当成交量视图显示为线时的颜色
@@ -1977,7 +1986,6 @@ public class KChartView extends BaseKChartView {
         volumeRender.setLineChartColor(color);
         return this;
     }
-
 
     /**
      * 设置成交量视图显示 柱/线
@@ -1999,9 +2007,8 @@ public class KChartView extends BaseKChartView {
         return this;
     }
 
-
     /**
-     * 替换MainDraw  自定义MainDraw使用
+     * 替换MainDraw 自定义MainDraw使用
      *
      * @param t   MainDraw子类对象
      * @param <T> 泛型控制
@@ -2012,9 +2019,8 @@ public class KChartView extends BaseKChartView {
         return this;
     }
 
-
     /**
-     * 替换volDraw  自定义volDraw使用
+     * 替换volDraw 自定义volDraw使用
      *
      * @param t   VolumeDraw子类对象
      * @param <T> 泛型控制
@@ -2061,7 +2067,7 @@ public class KChartView extends BaseKChartView {
     /**
      * 设置Y轴标签显示模式
      *
-     * @param model {@link Status.YLabelModel}  独立显示不与K线重叠/显示在K线之上
+     * @param model {@link Status.YLabelModel} 独立显示不与K线重叠/显示在K线之上
      * @return {@link KChartView}
      */
     public KChartView setYLabelState(Status.YLabelModel model) {

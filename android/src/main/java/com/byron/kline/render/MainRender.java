@@ -18,14 +18,14 @@ import com.byron.kline.utils.NumberTools;
 import com.byron.kline.utils.Status;
 
 /*************************************************************************
- * Description   :
+ * Description :
  *
- * @PackageName  : com.byron.kline.utils
- * @FileName     : MainDraw.java
- * @Author       : chao
- * @Date         : 2019/4/8
- * @Email        : icechliu@gmail.com
- * @version      : V1
+ * @PackageName : com.byron.kline.utils
+ * @FileName : MainDraw.java
+ * @Author : chao
+ * @Date : 2019/4/8
+ * @Email : icechliu@gmail.com
+ * @version : V1
  *************************************************************************/
 public class MainRender extends BaseRender {
 
@@ -48,7 +48,6 @@ public class MainRender extends BaseRender {
     private Paint downPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private Paint downLinePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-
     private Paint indexPaintOne = new Paint(Paint.ANTI_ALIAS_FLAG);
     private Paint indexPaintTwo = new Paint(Paint.ANTI_ALIAS_FLAG);
     private Paint indexPaintThree = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -59,7 +58,6 @@ public class MainRender extends BaseRender {
 
     private String[] marketInfoText = new String[8];
 
-
     public MainRender(Context context) {
         indexInterval = Constants.getCount();
         selectorBorderPaint.setStyle(Paint.Style.STROKE);
@@ -67,14 +65,14 @@ public class MainRender extends BaseRender {
         upLinePaint.setAntiAlias(true);
         downLinePaint.setStyle(Paint.Style.STROKE);
         downLinePaint.setAntiAlias(true);
-        marketInfoText[0] = ("时间   ");
-        marketInfoText[1] = ("开     ");
-        marketInfoText[2] = ("高     ");
-        marketInfoText[3] = ("低     ");
-        marketInfoText[4] = ("收     ");
-        marketInfoText[5] = ("涨跌额  ");
-        marketInfoText[6] = ("涨跌幅  ");
-        marketInfoText[7] = ("成交量  ");
+        marketInfoText[0] = ("时间 ");
+        marketInfoText[1] = ("开 ");
+        marketInfoText[2] = ("高 ");
+        marketInfoText[3] = ("低 ");
+        marketInfoText[4] = ("收 ");
+        marketInfoText[5] = ("涨跌额 ");
+        marketInfoText[6] = ("涨跌幅 ");
+        marketInfoText[7] = ("成交量 ");
 
         indexMa1 = String.format(context.getString(R.string.k_index_ma_formater), Constants.K_MA_NUMBER_1);
         indexMa2 = String.format(context.getString(R.string.k_index_ma_formater), Constants.K_MA_NUMBER_2);
@@ -85,9 +83,9 @@ public class MainRender extends BaseRender {
         indexLb = context.getString(R.string.k_index_lb);
     }
 
-
     @Override
-    public void render(Canvas canvas, float lastX, float curX, @NonNull BaseKChartView view, int position, float... values) {
+    public void render(Canvas canvas, float lastX, float curX, @NonNull BaseKChartView view, int position,
+            float... values) {
         if (view.getKlineStatus().showLine()) {
             if (position == itemCount - 1) {
                 float lastClosePrice = values[Constants.INDEX_CLOSE];
@@ -118,23 +116,23 @@ public class MainRender extends BaseRender {
                         position);
                 Status.MainStatus status = view.getStatus();
                 if (status == Status.MainStatus.MA) {
-                    //画第一根ma
+                    // 画第一根ma
                     drawLine(lastX, curX, canvas, view, position,
                             values[Constants.INDEX_MA_1],
                             maOne, indexPaintOne,
                             values[Constants.INDEX_MA_1 + indexInterval]);
-                    //画第二根ma
+                    // 画第二根ma
                     drawLine(lastX, curX, canvas, view, position,
                             values[Constants.INDEX_MA_2],
                             maTwo, indexPaintTwo,
                             values[Constants.INDEX_MA_2 + indexInterval]);
-                    //画第三根ma
+                    // 画第三根ma
                     drawLine(lastX, curX, canvas, view, position,
                             values[Constants.INDEX_MA_3],
                             maThree, indexPaintThree,
                             values[Constants.INDEX_MA_3 + indexInterval]);
                 } else if (status == Status.MainStatus.BOLL) {
-                    //画boll
+                    // 画boll
                     drawLine(lastX, curX, canvas, view, position,
                             values[Constants.INDEX_BOLL_UP],
                             bollUp, indexPaintTwo,
@@ -153,7 +151,8 @@ public class MainRender extends BaseRender {
         }
     }
 
-    private void drawLine(float lastX, float curX, @NonNull Canvas canvas, @NonNull BaseKChartView view, int position, float start, float animEnd, Paint paint, float end) {
+    private void drawLine(float lastX, float curX, @NonNull Canvas canvas, @NonNull BaseKChartView view, int position,
+            float start, float animEnd, Paint paint, float end) {
         if (Float.MIN_VALUE != start) {
             if (itemCount - 1 == position && 0 != animEnd && view.isAnimationLast()) {
                 view.renderMainLine(canvas, paint, lastX, start, curX, animEnd);
@@ -163,12 +162,12 @@ public class MainRender extends BaseRender {
         }
     }
 
-
     @Override
     @SuppressWarnings("all")
-    public void renderText(@NonNull Canvas canvas, @NonNull BaseKChartView view, float x, float y, int position, float[] values) {
+    public void renderText(@NonNull Canvas canvas, @NonNull BaseKChartView view, float x, float y, int position,
+            float[] values) {
 
-        //修改头文字显示在顶部
+        // 修改头文字显示在顶部
         y = maTextHeight + mainLegendMarginTop;
         if (!view.getKlineStatus().showLine()) {
             Status.MainStatus status = view.getStatus();
@@ -206,7 +205,6 @@ public class MainRender extends BaseRender {
         }
     }
 
-
     @Override
     public IValueFormatter getValueFormatter() {
         return valueFormatter;
@@ -227,7 +225,8 @@ public class MainRender extends BaseRender {
      * @param open   开盘价
      * @param close  收盘价
      */
-    private void renderCandle(BaseKChartView view, Canvas canvas, float x, float high, float low, float open, float close, int position) {
+    private void renderCandle(BaseKChartView view, Canvas canvas, float x, float high, float low, float open,
+            float close, int position) {
         high = view.getMainY(high);
         low = view.getMainY(low);
         open = view.getMainY(open);
@@ -239,16 +238,17 @@ public class MainRender extends BaseRender {
         float r = candleWidth / 2 * view.getScaleX();
         float cancleLeft = x - r;
         float candleright = x + r;
-        if (open < close) {//跌
+        if (open < close) {// 跌
             renderCandle(canvas, x, high, low, open, close, cancleLeft, candleright, downPaint, downLinePaint);
-        } else if (open > close) {//涨
+        } else if (open > close) {// 涨
             renderCandle(canvas, x, high, low, close, open, cancleLeft, candleright, upPaint, upLinePaint);
         } else {
             renderCandle(canvas, x, high, low, close - 1, open, cancleLeft, candleright, upPaint, upLinePaint);
         }
     }
 
-    private void renderCandle(Canvas canvas, float x, float high, float low, float open, float close, float cancleLeft, float candleright, Paint paint, Paint linePaint) {
+    private void renderCandle(Canvas canvas, float x, float high, float low, float open, float close, float cancleLeft,
+            float candleright, Paint paint, Paint linePaint) {
         canvas.drawRect(cancleLeft, close, candleright, open, paint);
         if (high < open) {
             canvas.drawLine(x, open, x, high, linePaint);
@@ -281,7 +281,7 @@ public class MainRender extends BaseRender {
         strings[7] = NumberTools.formatAmount(valueFormatter.format(values[Constants.INDEX_VOL]));
 
         float width = 0, left, top = margin + view.getChartPaddingTop();
-        //上下多加两个padding值的间隙
+        // 上下多加两个padding值的间隙
         int length = strings.length;
         float height = padding * ((length - 1) + 4) + selectedTextHeight * length;
         for (int i = 0; i < length; i++) {
@@ -424,7 +424,6 @@ public class MainRender extends BaseRender {
         maTextHeight = metrics.descent - metrics.ascent;
     }
 
-
     @Override
     public void startAnim(BaseKChartView view, float[] values) {
 
@@ -436,9 +435,12 @@ public class MainRender extends BaseRender {
                     maThree = values[Constants.INDEX_MA_3];
                     return;
                 }
-                view.generaterAnimator(maOne, values[Constants.INDEX_MA_1], animation -> maOne = (float) animation.getAnimatedValue());
-                view.generaterAnimator(maTwo, values[Constants.INDEX_MA_2], animation -> maTwo = (float) animation.getAnimatedValue());
-                view.generaterAnimator(maThree, values[Constants.INDEX_MA_3], animation -> maThree = (float) animation.getAnimatedValue());
+                view.generaterAnimator(maOne, values[Constants.INDEX_MA_1],
+                        animation -> maOne = (float) animation.getAnimatedValue());
+                view.generaterAnimator(maTwo, values[Constants.INDEX_MA_2],
+                        animation -> maTwo = (float) animation.getAnimatedValue());
+                view.generaterAnimator(maThree, values[Constants.INDEX_MA_3],
+                        animation -> maThree = (float) animation.getAnimatedValue());
                 break;
             case BOLL:
                 if (bollUp == 0 || !view.isAnimationLast()) {
@@ -447,9 +449,12 @@ public class MainRender extends BaseRender {
                     bollMb = values[Constants.INDEX_BOLL_MB];
 
                 } else {
-                    view.generaterAnimator(bollMb, values[Constants.INDEX_BOLL_MB], animation -> bollMb = (float) animation.getAnimatedValue());
-                    view.generaterAnimator(bollDn, values[Constants.INDEX_BOLL_DN], animation -> bollDn = (float) animation.getAnimatedValue());
-                    view.generaterAnimator(bollUp, values[Constants.INDEX_BOLL_UP], animation -> bollUp = (float) animation.getAnimatedValue());
+                    view.generaterAnimator(bollMb, values[Constants.INDEX_BOLL_MB],
+                            animation -> bollMb = (float) animation.getAnimatedValue());
+                    view.generaterAnimator(bollDn, values[Constants.INDEX_BOLL_DN],
+                            animation -> bollDn = (float) animation.getAnimatedValue());
+                    view.generaterAnimator(bollUp, values[Constants.INDEX_BOLL_UP],
+                            animation -> bollUp = (float) animation.getAnimatedValue());
                 }
                 break;
 
@@ -493,7 +498,6 @@ public class MainRender extends BaseRender {
         }
     }
 
-
     public void setIncreaseColor(int color) {
         upPaint.setColor(color);
         upLinePaint.setColor(color);
@@ -506,12 +510,12 @@ public class MainRender extends BaseRender {
     }
 
     public void renderMaxMinValue(Canvas canvas, BaseKChartView view,
-                                  float maxX, float mainHighMaxValue,
-                                  float minX, float mainLowMinValue) {
+            float maxX, float mainHighMaxValue,
+            float minX, float mainLowMinValue) {
         if (!view.getKlineStatus().showLine()) {
-            //绘制最大值和最小值
+            // 绘制最大值和最小值
             float y = view.getMainY(mainLowMinValue);
-            //计算显示位置
+            // 计算显示位置
             y = fixTextYBaseBottom(y);
             String LowString;
             float stringWidth, screenMid = view.getTranslationScreenMid();
@@ -538,9 +542,8 @@ public class MainRender extends BaseRender {
         }
     }
 
-
     /**
-     * 最大值最小值画笔  max value /min value paint
+     * 最大值最小值画笔 max value /min value paint
      */
     private Paint maxMinPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
@@ -555,7 +558,7 @@ public class MainRender extends BaseRender {
     private float limitTextDecent;
 
     /**
-     * 设置最大值/最小值文字大小 max value /min value  text size
+     * 设置最大值/最小值文字大小 max value /min value text size
      */
     public void setLimitTextSize(float textSize) {
         maxMinPaint.setTextSize(textSize);
@@ -571,7 +574,6 @@ public class MainRender extends BaseRender {
     public float fixTextYBaseBottom(float y) {
         return y + (limitTextHigh) / 2 - limitTextDecent;
     }
-
 
     /**
      * 分时线颜色, minute line color

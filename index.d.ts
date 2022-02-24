@@ -265,7 +265,7 @@ export interface ByronKlineProps {
   /**
    * 选中时X坐标边框线颜色
    */
-  selectedLabelBorderColor: string;
+  selectedXLabelBorderColor: string;
   /**
    * 设置背景色顶部颜色
    */

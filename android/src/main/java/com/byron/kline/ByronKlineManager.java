@@ -46,9 +46,9 @@ public class ByronKlineManager extends ViewGroupManager<ViewGroup> {
     private int _pricePrecision = 2;
     private int _volumePrecision = 2;
     private Boolean _requestStatus = false;
-    private String _selectedInfoBoxTextColor;
-    private String _selectedInfoBoxBorderColor;
-    private String _selectedInfoBoxBackgroundColor;
+    private String _selectedInfoBoxTextColor = "#333333";
+    private String _selectedInfoBoxBorderColor = "#333333";
+    private String _selectedInfoBoxBackgroundColor = "#333333";
     private String _macdIncreaseColor;
     private String _macdDecreaseColor;
 
@@ -62,13 +62,12 @@ public class ByronKlineManager extends ViewGroupManager<ViewGroup> {
     @Override
     public ViewGroup createViewInstance(@NotNull ThemedReactContext context) {
         _mContext = context;
-        @SuppressLint("InflateParams") View layout = LayoutInflater.from(context).inflate(R.layout.kline, null);
+        @SuppressLint("InflateParams")
+        View layout = LayoutInflater.from(context).inflate(R.layout.kline, null);
         layout.setLayoutParams(
                 new FrameLayout.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.MATCH_PARENT
-                )
-        );
+                        ViewGroup.LayoutParams.MATCH_PARENT));
         _mContainer = layout.findViewById(R.id.container);
         _adapter = new KLineChartAdapter<>();
         _mContainer.setVisibility(View.VISIBLE);
@@ -277,8 +276,7 @@ public class ByronKlineManager extends ViewGroupManager<ViewGroup> {
         _chartView.setSelectInfoBoxColors(
                 Color.parseColor(_selectedInfoBoxTextColor),
                 Color.parseColor(_selectedInfoBoxBorderColor),
-                Color.parseColor(_selectedInfoBoxBackgroundColor)
-        );
+                Color.parseColor(_selectedInfoBoxBackgroundColor));
     }
 
     @ReactProp(name = "selectedInfoBoxBorderColor")
@@ -287,8 +285,7 @@ public class ByronKlineManager extends ViewGroupManager<ViewGroup> {
         _chartView.setSelectInfoBoxColors(
                 Color.parseColor(_selectedInfoBoxTextColor),
                 Color.parseColor(_selectedInfoBoxBorderColor),
-                Color.parseColor(_selectedInfoBoxBackgroundColor)
-        );
+                Color.parseColor(_selectedInfoBoxBackgroundColor));
     }
 
     @ReactProp(name = "selectedInfoBoxBackgroundColor")
@@ -297,8 +294,7 @@ public class ByronKlineManager extends ViewGroupManager<ViewGroup> {
         _chartView.setSelectInfoBoxColors(
                 Color.parseColor(_selectedInfoBoxTextColor),
                 Color.parseColor(_selectedInfoBoxBorderColor),
-                Color.parseColor(_selectedInfoBoxBackgroundColor)
-        );
+                Color.parseColor(_selectedInfoBoxBackgroundColor));
     }
 
     @ReactProp(name = "selectedLabelBorderWidth")
@@ -306,8 +302,8 @@ public class ByronKlineManager extends ViewGroupManager<ViewGroup> {
         _chartView.setSelectedXLabelBorderWidth(selectedLabelBorderWidth);
     }
 
-    @ReactProp(name = "selectedLabelBorderColor")
-    public void setSelectedLabelBorderColor(ViewGroup view, String selectedLabelBorderColor) {
+    @ReactProp(name = "selectedXLabelBorderColor")
+    public void setSelectedXLabelBorderColor(ViewGroup view, String selectedLabelBorderColor) {
         _chartView.setSelectedXLabelBorderColor(Color.parseColor(selectedLabelBorderColor));
     }
 
@@ -468,8 +464,7 @@ public class ByronKlineManager extends ViewGroupManager<ViewGroup> {
         _macdIncreaseColor = macdIncreaseColor;
         _chartView.setMacdChartColor(
                 Color.parseColor(_macdIncreaseColor),
-                Color.parseColor(_macdDecreaseColor)
-        );
+                Color.parseColor(_macdDecreaseColor));
     }
 
     @ReactProp(name = "macdDecreaseColor")
@@ -477,8 +472,7 @@ public class ByronKlineManager extends ViewGroupManager<ViewGroup> {
         _macdDecreaseColor = macdDecreaseColor;
         _chartView.setMacdChartColor(
                 Color.parseColor(_macdIncreaseColor),
-                Color.parseColor(_macdDecreaseColor)
-        );
+                Color.parseColor(_macdDecreaseColor));
     }
 
     @ReactProp(name = "macdWidth")
@@ -605,8 +599,7 @@ public class ByronKlineManager extends ViewGroupManager<ViewGroup> {
         List<KChartBean> list = gson.fromJson(
                 json,
                 new TypeToken<List<KChartBean>>() {
-                }.getType()
-        );
+                }.getType());
         _adapter.resetData(list, true);
     }
 
@@ -620,8 +613,7 @@ public class ByronKlineManager extends ViewGroupManager<ViewGroup> {
         String[] list = gson.fromJson(
                 json,
                 new TypeToken<String[]>() {
-                }.getType()
-        );
+                }.getType());
         _chartView.setSelectedInfoLabels(list);
     }
 
@@ -647,8 +639,7 @@ public class ByronKlineManager extends ViewGroupManager<ViewGroup> {
                     public String format(float value) {
                         return String.format(Locale.CHINA, "%." + _pricePrecision + "f", value);
                     }
-                }
-        );
+                });
     }
 
     @ReactProp(name = "volumePrecision")
@@ -660,8 +651,7 @@ public class ByronKlineManager extends ViewGroupManager<ViewGroup> {
                     public String format(float value) {
                         return String.format(Locale.CHINA, "%." + _volumePrecision + "f", value);
                     }
-                }
-        );
+                });
     }
 
     @ReactProp(name = "increaseColor")
@@ -678,15 +668,14 @@ public class ByronKlineManager extends ViewGroupManager<ViewGroup> {
     @Override
     public Map<String, Integer> getCommandsMap() {
         return MapBuilder.of(
-                "byronController", 1001
-        );
+                "byronController", 1001);
 
     }
 
     @Override
     public void receiveCommand(@NotNull ViewGroup view, String commandId, @Nullable ReadableArray args) {
         assert args != null;
-//        System.out.println(">> receiveCommand:" + args.toString());
+        // System.out.println(">> receiveCommand:" + args.toString());
         if (!commandId.equals("ByronKline")) {
             return;
         }
@@ -696,8 +685,7 @@ public class ByronKlineManager extends ViewGroupManager<ViewGroup> {
         ByronController options = gson.fromJson(
                 json,
                 new TypeToken<ByronController>() {
-                }.getType()
-        );
+                }.getType());
         if (options.event.equals("init")) {
             initChartView();
         }
@@ -733,8 +721,8 @@ public class ByronKlineManager extends ViewGroupManager<ViewGroup> {
                 "onMoreKLineData",
                 MapBuilder.of(
                         "phasedRegistrationNames",
-                        MapBuilder.of("bubbled", "onRNMoreKLineData"))
-        ).build();
+                        MapBuilder.of("bubbled", "onRNMoreKLineData")))
+                .build();
     }
 
     public void onReceiveNativeEvent() {
@@ -744,8 +732,7 @@ public class ByronKlineManager extends ViewGroupManager<ViewGroup> {
         _mContext.getJSModule(RCTEventEmitter.class).receiveEvent(
                 _mContainer.getId(),
                 "onMoreKLineData",
-                event
-        );
+                event);
     }
 
     private void initChartView() {
@@ -787,7 +774,7 @@ public class ByronKlineManager extends ViewGroupManager<ViewGroup> {
         if ("0.0".equals(status)) { // 显示MA
             _chartView.hideSelectData();
             _chartView.changeMainDrawType(Status.MainStatus.MA);
-        } else if ("1.0".equals(status)) {  // BOLL
+        } else if ("1.0".equals(status)) { // BOLL
             _chartView.hideSelectData();
             _chartView.changeMainDrawType(Status.MainStatus.BOLL);
         } else if ("2.0".equals(status)) { // MainStateNONE
