@@ -48,6 +48,15 @@
     view.amplitudeText.text = [KLineStateManager manager].locales[6];
     view.amountText.text = [KLineStateManager manager].locales[7];
   }
+
+    view.timeText.textColor = ChartColors_kLineColor;
+    view.openText.textColor = ChartColors_kLineColor;
+    view.highText.textColor = ChartColors_kLineColor;
+    view.lowText.textColor = ChartColors_kLineColor;
+    view.clsoeText.textColor = ChartColors_kLineColor;
+    view.IncreaseText.textColor =ChartColors_kLineColor;
+    view.amplitudeText.textColor = ChartColors_kLineColor;
+    view.amountText.textColor = ChartColors_kLineColor;
     return view;
 }
 
@@ -73,9 +82,17 @@
     _openLable.text = [NSString stringWithFormat:fixedPriceStr,model.open];
      _highLable.text = [NSString stringWithFormat:fixedPriceStr,model.high];
      _lowLabel.text = [NSString stringWithFormat:fixedPriceStr,model.low];
-     _clsoeLabel.text = [NSString stringWithFormat:fixedPriceStr,model.close];
+     _clsoeLabel.text = [NSString stringWithFormat:fixedPriceStr,model.close]; 
     CGFloat upDown = model.close - model.open;
     NSString *symbol = @"-";
+
+    self.timeLable.textColor = ChartColors_kLineColor;
+    self.openLable.textColor = ChartColors_kLineColor;
+    self.highLable.textColor = ChartColors_kLineColor;
+    self.lowLabel.textColor = ChartColors_kLineColor;
+    self.clsoeLabel.textColor = ChartColors_kLineColor;
+    self.amountLable.textColor = ChartColors_kLineColor;
+
     if(upDown > 0) {
         symbol = @"+";
         self.IncreaseLabel.textColor = ChartColors_upColor;

@@ -17,7 +17,7 @@ import axios from 'axios';
 export default class App extends Component {
   state = {
     list: [],
-    darkTheme: true,
+    darkTheme: false,
   };
 
   onMoreKLineData = (params) => {
@@ -97,41 +97,8 @@ export default class App extends Component {
               style={{flex: 1}}
               datas={this.state.list}
               onMoreKLineData={this.onMoreKLineData}
-              indicators={[KLineIndicator.TimeLineShow]}
+              indicators={[KLineIndicator.TimeLineHide]}
               mainBackgroundColor="#262626"
-              gridLineColor="#2F2F2F"
-              lineWidth={4}
-              limitTextColor="#ffffff"
-              labelTextColor="#ffffff"
-              commonTextSize={35}
-              labelTextSize={35}
-              // Label de Hora
-              selectedXLabelBorderColor="#333333"
-              selectedXLabelBackgroundColor="#333333"
-              selectedLabelTextColor="#ffffff"
-              selectedDateBoxVerticalPadding={10}
-              // Linhas
-              selectedYLineColor="#4003A99C"
-              selectedXLineColor="#03A99C"
-              selectedCrossPointRadius={5}
-              selectedCrossPointColor="#03A99C"
-              selectedYLineWidth={2}
-              priceLineColor="#D6FFFF"
-              // Label de Preço
-              priceLabelRightBackgroundColor="#D6FFFF"
-              priceLabelRightTextColor="#03A99C"
-              priceLineRightColor="#D6FFFF"
-              // Timeline - Chart Line
-              timeLineEndPointColor="#00DDCC"
-              timeLineColor="#00DDCC"
-              timeLineFillTopColor="#5000DDCC"
-              timeLineEndRadius={4}
-              // Box de informações
-              selectedInfoBoxTextColor="#f3f3f3"
-              selectedInfoBoxBorderColor="#2F2F2F"
-              selectedInfoBoxBackgroundColor={'#2F2F2F'}
-              selectedInfoTextSize={35}
-              selectedInfoBoxPadding={30}
               locales={[
                 'Data   ',
                 'Abertura',
@@ -191,11 +158,6 @@ export default class App extends Component {
                 'Amplitude',
                 'Volume',
               ]}
-              // TESTE
-              yLabelAlign={true}
-              priceLabelInLineTextColor="red"
-              priceLabelInLineBoxBackgroundColor="red"
-              selectedPriceBoxBackgroundColor="red"
             />
           )}
         </View>
@@ -221,3 +183,115 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+/*
+ANDROID
+
+{(this.state.darkTheme && (
+  <ByronKlineChart
+    style={{flex: 1}}
+    datas={this.state.list}
+    onMoreKLineData={this.onMoreKLineData}
+    indicators={[KLineIndicator.TimeLineShow]}
+    mainBackgroundColor="#262626"
+    gridLineColor="#2F2F2F"
+    lineWidth={4}
+    limitTextColor="#ffffff"
+    labelTextColor="#ffffff"
+    commonTextSize={35}
+    labelTextSize={35}
+    // Label de Hora
+    selectedXLabelBorderColor="#333333"
+    selectedXLabelBackgroundColor="#333333"
+    selectedLabelTextColor="#ffffff"
+    selectedDateBoxVerticalPadding={10}
+    // Linhas
+    selectedYLineColor="#4003A99C"
+    selectedXLineColor="#03A99C"
+    selectedCrossPointRadius={5}
+    selectedCrossPointColor="#03A99C"
+    selectedYLineWidth={2}
+    priceLineColor="#D6FFFF"
+    // Label de Preço
+    priceLabelRightBackgroundColor="#D6FFFF"
+    priceLabelRightTextColor="#03A99C"
+    priceLineRightColor="#D6FFFF"
+    // Timeline - Chart Line
+    timeLineEndPointColor="#00DDCC"
+    timeLineColor="#00DDCC"
+    timeLineFillTopColor="#5000DDCC"
+    timeLineEndRadius={4}
+    // Box de informações
+    selectedInfoBoxTextColor="#f3f3f3"
+    selectedInfoBoxBorderColor="#2F2F2F"
+    selectedInfoBoxBackgroundColor={'#2F2F2F'}
+    selectedInfoTextSize={35}
+    selectedInfoBoxPadding={30}
+    locales={[
+      'Data   ',
+      'Abertura',
+      'Máximo',
+      'Mínimo',
+      'Fechamento',
+      'Variação',
+      'Amplitude',
+      'Volume',
+    ]}
+  />
+)) || (
+  <ByronKlineChart
+    style={{flex: 1}}
+    datas={this.state.list}
+    onMoreKLineData={this.onMoreKLineData}
+    indicators={[KLineIndicator.TimeLineHide]}
+    mainBackgroundColor="#ffffff"
+    gridLineColor="#f3f3f3"
+    lineWidth={3}
+    limitTextColor="#333333"
+    labelTextColor="#333333"
+    // Label de Hora
+    selectedXLabelBorderColor="#333333"
+    selectedXLabelBackgroundColor="#333333"
+    selectedLabelTextColor="#ffffff"
+    selectedDateBoxVerticalPadding={10}
+    // Linhas
+    selectedYLineColor="#E5D9FB"
+    selectedXLineColor="#7632e2"
+    selectedCrossPointRadius={5}
+    selectedCrossPointColor="#7632e2"
+    selectedYLineWidth={2}
+    priceLineColor="#7632e2"
+    // Label de Preço
+    priceLabelRightBackgroundColor="#E5D9FB"
+    priceLabelRightTextColor="#7632e2"
+    priceLineRightColor="#7632e2"
+    // Timeline - Chart Line
+    timeLineEndPointColor="#AC77FF"
+    timeLineColor="#AC77FF"
+    timeLineFillTopColor="#EFE8FB"
+    timeLineEndRadius={4}
+    // Box de informações
+    selectedInfoBoxTextColor="#333333"
+    selectedInfoBoxBorderColor="#f3f3f3"
+    selectedInfoBoxBackgroundColor={'#ffffff'}
+    selectedInfoTextSize={35}
+    selectedInfoBoxPadding={30}
+    locales={[
+      'Data   ',
+      'Abertura',
+      'Máximo',
+      'Mínimo',
+      'Fechamento',
+      'Variação',
+      'Amplitude',
+      'Volume',
+    ]}
+    // TESTE
+    yLabelAlign={true}
+    priceLabelInLineTextColor="red"
+    priceLabelInLineBoxBackgroundColor="red"
+    selectedPriceBoxBackgroundColor="red"
+  />
+)}
+
+*/

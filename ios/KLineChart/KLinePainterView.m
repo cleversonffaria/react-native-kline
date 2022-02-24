@@ -381,11 +381,11 @@
     if(x1 < self.frame.size.width / 2) {
         NSString *text = [NSString stringWithFormat:maxFixedPrice,_mMainHighMaxValue];
         CGRect rect = [text getRectWithFontSize:ChartStyle_defaultTextSize];
-        [self.mainRenderer drawText:text atPoint:CGPointMake(x1, y1 - rect.size.height / 2) fontSize:ChartStyle_defaultTextSize textColor:[UIColor whiteColor]];
+        [self.mainRenderer drawText:text atPoint:CGPointMake(x1, y1 - rect.size.height / 2) fontSize:ChartStyle_defaultTextSize textColor:ChartColors_maxMinTextColor];
     } else {
         NSString *text = [NSString stringWithFormat:minFixedPrice,_mMainHighMaxValue];
        CGRect rect = [text getRectWithFontSize:ChartStyle_defaultTextSize];
-       [self.mainRenderer drawText:text atPoint:CGPointMake(x1 - rect.size.width, y1 - rect.size.height / 2) fontSize:ChartStyle_defaultTextSize textColor:[UIColor whiteColor]];
+       [self.mainRenderer drawText:text atPoint:CGPointMake(x1 - rect.size.width, y1 - rect.size.height / 2) fontSize:ChartStyle_defaultTextSize textColor:ChartColors_maxMinTextColor];
     }
     
     CGFloat y2 = [self.mainRenderer getY:_mMainLowMinValue];
@@ -393,11 +393,11 @@
     if(x2 < self.frame.size.width / 2) {
         NSString *text = [NSString stringWithFormat:maxFixedPrice,_mMainLowMinValue];
         CGRect rect = [text getRectWithFontSize:ChartStyle_defaultTextSize];
-        [self.mainRenderer drawText:text atPoint:CGPointMake(x2, y2 - rect.size.height / 2) fontSize:ChartStyle_defaultTextSize textColor:[UIColor whiteColor]];
+        [self.mainRenderer drawText:text atPoint:CGPointMake(x2, y2 - rect.size.height / 2) fontSize:ChartStyle_defaultTextSize textColor:ChartColors_maxMinTextColor];
     } else {
         NSString *text = [NSString stringWithFormat:minFixedPrice,_mMainLowMinValue];
        CGRect rect = [text getRectWithFontSize:ChartStyle_defaultTextSize];
-       [self.mainRenderer drawText:text atPoint:CGPointMake(x2 - rect.size.width, y2 - rect.size.height / 2) fontSize:ChartStyle_defaultTextSize textColor:[UIColor whiteColor]];
+       [self.mainRenderer drawText:text atPoint:CGPointMake(x2 - rect.size.width, y2 - rect.size.height / 2) fontSize:ChartStyle_defaultTextSize textColor:ChartColors_maxMinTextColor];
     }
 }
 -(void)drawLongPressCrossLine:(CGContextRef)context {
@@ -414,13 +414,13 @@
     
     CGFloat y = [self.mainRenderer getY:point.close];
     
-    CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
+    CGContextSetStrokeColorWithColor(context, ChartColors_markerLineColor.CGColor);
     CGContextSetLineWidth(context, 0.5);
     CGContextMoveToPoint(context, 0, y);
     CGContextAddLineToPoint(context, self.frame.size.width, y);
     CGContextDrawPath(context, kCGPathStroke);
     
-    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
+    CGContextSetFillColorWithColor(context, ChartColors_markerLineColor.CGColor);
     CGContextAddArc(context, curX, y, 2, 0, M_PI_2, true);
     CGContextDrawPath(context, kCGPathFill);
     [self drawLongPressCrossLineText:context curPoint:point curX:curX y:y];
@@ -448,7 +448,7 @@
         CGContextSetStrokeColorWithColor(context, ChartColors_markerBorderColor.CGColor);
         CGContextSetFillColorWithColor(context, ChartColors_markerBgColor.CGColor);
         CGContextDrawPath(context, kCGPathFillStroke);
-        [self.mainRenderer drawText:text atPoint:CGPointMake(self.frame.size.width - textWdith - 2, y - rect.size.height / 2) fontSize:ChartStyle_defaultTextSize textColor: [UIColor whiteColor]];
+        [self.mainRenderer drawText:text atPoint:CGPointMake(self.frame.size.width - textWdith - 2, y - rect.size.height / 2) fontSize:ChartStyle_defaultTextSize textColor:ChartColors_markerTextColor];
     } else {
         isLeft = false;
         CGContextMoveToPoint(context, 0, y - textHeight / 2);
@@ -462,17 +462,17 @@
         CGContextSetStrokeColorWithColor(context, ChartColors_markerBorderColor.CGColor);
         CGContextSetFillColorWithColor(context, ChartColors_markerBgColor.CGColor);
         CGContextDrawPath(context, kCGPathFillStroke);
-        [self.mainRenderer drawText:text atPoint:CGPointMake(2, y - rect.size.height / 2) fontSize:ChartStyle_defaultTextSize textColor: [UIColor whiteColor]];
+        [self.mainRenderer drawText:text atPoint:CGPointMake(2, y - rect.size.height / 2) fontSize:ChartStyle_defaultTextSize textColor:ChartColors_markerTextColor];
     }
     
     NSString *dateText = [self calculateDateText:curPoint.id];
     CGRect dateRect = [dateText getRectWithFontSize:ChartStyle_defaultTextSize];
     CGFloat datepadding = 3;
-    CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
-    CGContextSetFillColorWithColor(context, [UIColor colorWithHexString:_mainBackgroundColor].CGColor);
+    CGContextSetStrokeColorWithColor(context, ChartColors_bottomMarkerBorderColor.CGColor);
+    CGContextSetFillColorWithColor(context, ChartColors_bottomMarkerBgColor.CGColor);
     CGContextAddRect(context, CGRectMake(curX - dateRect.size.width / 2 - datepadding, CGRectGetMinY(self.dateRect), dateRect.size.width + datepadding * 2, dateRect.size.height + datepadding * 2));
     CGContextDrawPath(context, kCGPathFillStroke);
-    [self.mainRenderer drawText:dateText atPoint:CGPointMake(curX - dateRect.size.width  / 2, CGRectGetMinY(self.dateRect) + datepadding) fontSize:ChartStyle_defaultTextSize textColor: [UIColor whiteColor]];
+    [self.mainRenderer drawText:dateText atPoint:CGPointMake(curX - dateRect.size.width  / 2, CGRectGetMinY(self.dateRect) + datepadding) fontSize:ChartStyle_defaultTextSize textColor: ChartColors_bottomMarkerTextColor];
     self.showInfoBlock(curPoint, isLeft);
     [self drawTopText:context curPoint:curPoint];
 }

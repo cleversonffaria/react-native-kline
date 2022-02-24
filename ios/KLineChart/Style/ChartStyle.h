@@ -10,10 +10,11 @@
 
 #define Color(rgbValue)  [UIColor rgbFromHex:rgbValue]
 
-  //背景颜色
-#define ChartColors_bgColor   Color(0xFF18181A)
-#define ChartColors_kLineColor   Color(0xFF18181A)
-#define ChartColors_gridColor   Color(0xFF2F2F31)
+  //Box de informações
+#define ChartColors_bgColor   Color(0xFF2F2F2F)
+#define ChartColors_kLineColor   Color(0xFFf2f2f2)
+
+#define ChartColors_gridColor   Color(0x202F2F2F)
 #define ChartColors_ma5Color   Color(0xffC9B885)
 #define ChartColors_ma10Color   Color(0xff6CB0A6)
 #define ChartColors_ma30Color   Color(0xff9979C6)
@@ -32,52 +33,54 @@
 
 #define ChartColors_wrColor   Color(0xffD2D2B4)
 
-#define ChartColors_yAxisTextColor   Color(0xff70839E)  //右边y轴刻度
-#define ChartColors_xAxisTextColor   Color(0xff60738E)  //下方时间刻度
+#define ChartColors_yAxisTextColor   Color(0xff7632e2)  //Escala do eixo y direito
+#define ChartColors_xAxisTextColor   Color(0xff7632e2)  //Escala de tempo abaixo
 
-#define ChartColors_maxMinTextColor   Color(0xffffffff)  //最大最小值的颜色
 
-//深度颜色
+#define ChartColors_maxMinTextColor   Color(0xff70839E)  //cor de máximo e mínimo 
+
+//Cor de profundidade
 #define ChartColors_depthBuyColor   Color(0xff60A893)
 #define ChartColors_depthSellColor   Color(0xffC15866)
 
-//选中后显示值边框颜色
-#define ChartColors_markerBorderColor   Color(0xffFFFFFF)
+//Cor linha e texto quando selecionada
+#define ChartColors_markerLineColor   Color(0xff7632e2)
 
-//选中后显示值背景的填充颜色
-#define ChartColors_markerBgColor   Color(0xff0D1722)
+#define ChartColors_markerTextColor   Color(0xff7632e2)
+#define ChartColors_markerBorderColor   Color(0xffcebceb)
+#define ChartColors_markerBgColor   Color(0xffcebceb)
 
-//实时线颜色等
-#define ChartColors_realTimeBgColor   Color(0xff0D1722)
-#define ChartColors_rightRealTimeTextColor   Color(0xff4C86CD)
-#define ChartColors_realTimeTextBorderColor   Color(0xffffffff)
-#define ChartColors_realTimeTextColor   Color(0xffffffff)
+#define ChartColors_bottomMarkerTextColor   Color(0xffffffff)
+#define ChartColors_bottomMarkerBorderColor   Color(0xff333333)
+#define ChartColors_bottomMarkerBgColor    Color(0xff333333)
 
-//实时线
-#define ChartColors_realTimeLineColor   Color(0xffffffff)
-#define ChartColors_realTimeLongLineColor   Color(0xff4C86CD)
+//Cores de linha ao vivo etc.
+#define ChartColors_realTimeBgColor   Color(0xff7632e2)//(Not Working)
+
+//linha ao vivo
+#define ChartColors_realTimeLongLineColor   Color(0xff7632e2)
 
 
-//表格右边文字颜色
+//Cor do texto no lado direito da tabela
 #define ChartColors_reightTextColor   Color(0xff70839E)
 #define ChartColors_bottomDateTextColor   Color(0xff70839E)
 
-#define ChartColors_crossHlineColor   Color(0x1FFFFFFF)
+#define ChartColors_crossHlineColor   Color(0x207632e2)
 
 static CGFloat dd = 11.0;
 //点与点的距离（）不用这种方式实现
 static CGFloat ChartStyle_pointWidth = 11.0;
 
-    //蜡烛之间的间距
+    //espaçamento entre velas
 static CGFloat ChartStyle_canldeMargin =  1.5;
 
-    //蜡烛默认宽度
+    //Largura padrão da vela
 static CGFloat ChartStyle_defaultcandleWidth =  8.5;
 
-    //蜡烛宽度
+    //largura da vela
 static CGFloat ChartStyle_candleWidth  = 8.5;
 
-    //蜡烛中间线的宽度
+    //A largura da linha do meio da vela
 static CGFloat ChartStyle_candleLineWidth =  1.5;
 
     //vol柱子宽度
@@ -86,13 +89,13 @@ static CGFloat ChartStyle_volWidth = 8.5;
     //macd柱子宽度
 static CGFloat ChartStyle_macdWidth = 3.0;
 
-    //垂直交叉线宽度
-static CGFloat ChartStyle_vCrossWidth  = 8.5;
+    //largura da barra vertical
+static CGFloat ChartStyle_vCrossWidth  = 0.5;
 
-    //水平交叉线宽度
+    //largura da barra horizontal
 static CGFloat ChartStyle_hCrossWidth = 0.5;
 
-    //网格
+    //Grade
 static CGFloat ChartStyle_gridRows = 4;
    
 static CGFloat ChartStyle_gridColumns = 5;
@@ -107,5 +110,5 @@ static CGFloat ChartStyle_defaultTextSize = 10;
    
 static CGFloat ChartStyle_bottomDatefontSize = 10;
    
-   //表格右边文字价格
+   //O preço do lado direito da tabela
 static CGFloat ChartStyle_reightTextSize = 10;
