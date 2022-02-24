@@ -97,8 +97,41 @@ export default class App extends Component {
               style={{flex: 1}}
               datas={this.state.list}
               onMoreKLineData={this.onMoreKLineData}
-              indicators={[KLineIndicator.TimeLineHide]}
+              indicators={[KLineIndicator.TimeLineShow]}
               mainBackgroundColor="#262626"
+              gridLineColor="#2F2F2F"
+              lineWidth={4}
+              limitTextColor="#ffffff"
+              labelTextColor="#ffffff"
+              commonTextSize={35}
+              labelTextSize={35}
+              // Label de Hora
+              selectedXLabelBorderColor="#333333"
+              selectedXLabelBackgroundColor="#333333"
+              selectedLabelTextColor="#ffffff"
+              selectedDateBoxVerticalPadding={10}
+              // Linhas
+              selectedYLineColor="#4003A99C"
+              selectedXLineColor="#03A99C"
+              selectedCrossPointRadius={5}
+              selectedCrossPointColor="#03A99C"
+              selectedYLineWidth={2}
+              priceLineColor="#D6FFFF"
+              // Label de Preço
+              priceLabelRightBackgroundColor="#D6FFFF"
+              priceLabelRightTextColor="#03A99C"
+              priceLineRightColor="#D6FFFF"
+              // Timeline - Chart Line
+              timeLineEndPointColor="#00DDCC"
+              timeLineColor="#00DDCC"
+              timeLineFillTopColor="#5000DDCC"
+              timeLineEndRadius={4}
+              // Box de informações
+              selectedInfoBoxTextColor="#f3f3f3"
+              selectedInfoBoxBorderColor="#2F2F2F"
+              selectedInfoBoxBackgroundColor={'#2F2F2F'}
+              selectedInfoTextSize={35}
+              selectedInfoBoxPadding={30}
               locales={[
                 'Data   ',
                 'Abertura',
@@ -115,7 +148,7 @@ export default class App extends Component {
               style={{flex: 1}}
               datas={this.state.list}
               onMoreKLineData={this.onMoreKLineData}
-              indicators={[KLineIndicator.TimeLineHide]}
+              indicators={[KLineIndicator.TimeLineShow]}
               mainBackgroundColor="#ffffff"
               gridLineColor="#f3f3f3"
               lineWidth={3}
@@ -158,6 +191,11 @@ export default class App extends Component {
                 'Amplitude',
                 'Volume',
               ]}
+              // TESTE
+              yLabelAlign={true}
+              priceLabelInLineTextColor="red"
+              priceLabelInLineBoxBackgroundColor="red"
+              selectedPriceBoxBackgroundColor="red"
             />
           )}
         </View>
